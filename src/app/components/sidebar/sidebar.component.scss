@@ -1,0 +1,127 @@
+@import "../../../assets/styles/variables.scss";
+
+@media screen and (min-width: 200px) and (max-width: 375px) {
+  .tabletNavbar {
+    display: none;
+  }
+  .webNavbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .tabletNavbar {
+    height: 100%;
+    width: 100px;
+    position: fixed;
+    z-index: 2;
+  }
+  .webNavbar {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .tabletNavbar {
+    height: 100%;
+    width: 100px;
+    position: fixed;
+    z-index: 2;
+    .profilSidebar {
+      img {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 20px;
+        align-self: center;
+        object-fit: cover;
+      }
+    }
+  }
+  .webNavbar {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .webNavbar {
+    height: 100%;
+    width: 234px;
+    position: fixed;
+    z-index: 2;
+  }
+  .tabletNavbar {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .tabletNavbar {
+    display: none;
+  }
+  .webNavbar {
+    height: 100%;
+    width: 234px;
+    position: absolute;
+    z-index: 2;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .webNavbar {
+    height: 100%;
+    width: 234px;
+    position: absolute;
+    z-index: 2;
+  }
+}
+
+.sidebar-heading {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5rem;
+  height: 36px;
+  img {
+    margin: 5px 0px;
+    margin-left: 15px;
+    max-width: 30px;
+    max-height: 30px;
+    align-items: center;
+    object-fit: cover;
+  }
+}
+
+.profilSidebar {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  img {
+    border-radius: 50%;
+    width: 170px;
+    height: 170px;
+    margin-bottom: 20px;
+    align-self: center;
+    object-fit: cover;
+  }
+  h3 {
+    text-align: center;
+  }
+}
+.tabletNavbar {
+  .list-group-flush {
+    a {
+      text-align: center;
+    }
+  }
+}
+
+.active-link {
+  background-color: $mainColor;
+  color: white;
+}
+#applicationNameSidebar {
+  margin: auto;
+}

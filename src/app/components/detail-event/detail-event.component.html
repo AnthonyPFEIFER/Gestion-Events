@@ -1,0 +1,123 @@
+<div class="webModalDiv">
+    <div class="header">
+        <h1>{{ evenement?.name }}</h1>
+    </div>
+    <div class="modal-body">
+        <div class="div-img-location">
+            <img class="img-location" src="{{ base64 }}" alt="" />
+        </div>
+        <div class="details">
+            <div class="image-organisateur-groupes">
+                <img src="{{ authorBase64 }}" id="photo-profil" alt="photo de profil" />
+                <div class="author-detail">
+                    <div class="author-name">{{evenement?.author?.firstName}}  {{ evenement?.author?.lastName}}</div>
+
+                    <div class="author-group" *ngFor="let group of evenement.groups">{{ group.name }}</div>
+                </div>
+            </div>
+            <div class="event-date"><fa-icon [icon]="clockIcon" class="icon"></fa-icon>{{ evenement?.date | date: "dd/MM/yyyy H:mm" }}</div>
+            <div class="event-address"><fa-icon [icon]="positionIcon" class="icon"></fa-icon><a target="_blank" [href]="'http://maps.google.com/?q=' + evenement.location.adress + evenement.location.city">{{ evenement?.location.adress }} à {{ evenement?.location.city }}</a></div>
+
+            <div id="participantsPhotos">
+                <div class="participantsListe">
+<!--                     <div class="participantCaches">+8</div> -->
+                    <div *ngFor="let user of evenement.users">
+                        <div class="participant" placement="top" ngbTooltip="user?.firstName user?.lastName">
+                            <img [src]="user?.base64" [title]="user?.firstName" alt="photo de profil"/>
+                            <!-- {{ user?.firstName }} {{ user?.lastName }} -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--             <h4 class="placesRestantes">X places restantes</h4> -->
+        </div>
+    </div>
+    <div class="eventSiteLink">
+    </div>
+    <p>
+        {{ evenement.comment }}
+    </p>
+    <div class="modale-footer">
+        <div class="left-side-modal-footer">
+            <a class="galleryLocation" (click)="showGallery(location)">
+                <button class="btn btn-primary">
+                    <fa-icon [icon]="picturesIcon"></fa-icon>
+                </button>
+            </a>
+                <button class="btn btn-primary btn-update" (click)="modify()" *ngIf="userIsAuthor">
+                     Modifier
+                </button>
+        </div>
+        <div class="right-side-modal-footer">
+            <button *ngIf="userComming === false"  class="btn btn-success" [disabled]="imComing" (click)="activeModal.close(true)">
+                <fa-icon [icon]="grinIcon"></fa-icon>&nbsp;Je viens
+            </button>
+            <button *ngIf="userComming" class="btn btn-danger" [disabled]="imComing" (click)="activeModal.close(false)">
+                <fa-icon [icon]="tearIcon"></fa-icon>&nbsp;Je viens pas
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<div class="phoneModalDiv">
+    <div class="header">
+        <div class="imageEvent">
+            <img src="https://i.pinimg.com/564x/97/89/0d/97890dfad655a59dbf7d4466336ca49e.jpg" alt="" />
+<!--             <h4 id="places-restantes">X places restantes</h4> -->
+            <div id="participantsPhotos">
+                <div *ngFor="let user of evenement.users">
+                    <div class="participant" placement="top" ngbTooltip="user?.firstName user?.lastName">
+                        <img [src]="account.avatar64" [title]="user?.firstName" alt="photo de profil"/>
+                        <!-- {{ user?.firstName }} {{ user?.lastName }} -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="nom-date-event">
+            <h1>{{ evenement?.name }}</h1>
+            <h3>{{ evenement?.date | date: "dd/MM/yyyy H:mm" }}</h3>
+        </div>
+        <h3 class="ml-4 mb-0 mt-0"><a target="_blank" [href]="'http://maps.google.com/?q=' + evenement.location.adress + evenement.location.city">{{ evenement?.location.adress }}</a></h3>
+    </div>
+    <div class="modal-body">
+        <div class="details">
+            <div class="image-organisateur-groupes">
+                <img [src]="account.avatar64" id="photo-profil" alt="photo de profil" />
+                <div>
+                    <h2 *ngFor="let user of evenement.users">
+                        {{ user?.firstName }} {{ user?.lastName }}
+                    </h2>
+                    <h3 *ngFor="let group of evenement.groups">{{ group.name }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="eventSiteLink">
+
+    </div>
+    <p>
+        {{ evenement?.comment }}
+    </p>
+    <div class="modale-footer">
+        <div class="left-side-modal-footer">
+            <a class="galleryLocation" (click)="showGallery(location)">
+                <button class="btn btn-primary">
+                    <fa-icon [icon]="picturesIcon"></fa-icon>
+                </button>
+                </a>
+                <button class="btn btn-primary btn-update" (click)="modify()" *ngIf="userIsAuthor">
+                     Modifier
+                </button>
+        </div>
+        <div class="right-side-modal-footer">
+            <button *ngIf="userComming === false"   class="btn btn-success" [disabled]="imComing" (click)="activeModal.close(true)">
+                <fa-icon [icon]="grinIcon"></fa-icon>&nbsp;Je viens
+            </button>
+            <button *ngIf="userComming" type="button"  class="btn btn-danger" (click)="activeModal.close(false)">
+                <fa-icon [icon]="tearIcon"></fa-icon>&nbsp;Je viens pas
+            </button>
+        </div>
+
+    </div>
+</div>

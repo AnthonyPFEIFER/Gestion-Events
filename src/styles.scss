@@ -1,0 +1,130 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+
+/* 
+ * Main screen
+ */
+.main-screen {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  height: 100vh;
+}
+
+@media screen and (min-width: 200px) and (max-width: 375px) {
+  .main-screen {
+    //margin-left: 0px;
+    //margin-top: 36px;
+    padding-top: 10px;
+    padding-bottom:60px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main-screen {
+    //margin-left: 100px;
+    //margin-top: 36px;
+    padding-top: 10px;
+    padding-bottom:70px;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .main-screen {
+    margin-left: 100px;
+    padding-top: 80px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .main-screen {
+    margin-left: 234px;
+    padding-top: 80px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .main-screen {
+    margin-left: 234px;
+    padding-top: 80px;
+  }
+
+  /* Modale du détail d'un évènement */
+
+  .modalEvent .modal-dialog {
+    max-width: 1000px;
+  }
+
+  .detail-event-modal .modal-content{
+    min-width: 1000px;
+  }
+}
+
+/* 
+ * Avatar
+ */
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.btn-primary {
+  background-color: #154194 !important;
+  border: 2px solid #154194 !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Css AddButton*/ 
+
+.addButtonDiv {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  .addButton{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1BD063;
+
+    .plusIcon {
+      color: white;
+      font-size: 25px;
+    }
+  }
+}
+
+
+/* Remove focus outline default style*/
+a:focus{
+  outline: none;
+}
+
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}

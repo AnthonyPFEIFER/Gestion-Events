@@ -1,0 +1,47 @@
+.main-screen {
+  h2 {
+    margin: 0 20px;
+    border-bottom: solid 1px gray;
+  }
+ 
+  .cardList {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    
+    }
+}
+
+
+// ElseDIV
+  .noEvent {
+    width: 50%;
+    margin: auto;
+  }
+
+  .card-title{
+    width: 100%;
+    background-color: violet;
+    height: 300px;
+  }
+
+
+  //Button add event
+  // .addButton {
+  //   bottom: 30px;
+  //   right: 30px;
+  //   border-radius: 100%;
+  //   position: fixed;
+  //   width: 70px;
+  //   height: 70px;
+  //   display: flex;
+  //   align-items: center;
+  //   font-size: 2.5rem;
+  // }
+  // .addButtonDiv {
+  //   .plusIcon {
+  //     color: white;
+  //   }
+  // }
+  

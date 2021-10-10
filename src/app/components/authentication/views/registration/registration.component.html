@@ -1,0 +1,48 @@
+<div class="wrapper">
+    <div class="row row-login justify-content-center">
+        <div class="card col-xs-8 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-3">
+            <div class="card-body center">
+
+                <img src="../../../assets/images/MistralEventLogo.png" style="width:60%;" alt="background de la page">
+
+                <div class="m-5 COBOL">Compiled Only Because Of Luck</div>
+
+                <form id="loginform" class="form-horizontal language" role="form" [formGroup]="formRegistration" (ngSubmit)="registration()">
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <input formControlName="firstName" id="firstName" type="text" class="form-control" name="firstName" value=""
+                            placeholder='Prénom'>
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <input formControlName="lastName" id="lastName" type="text" class="form-control" name="lastName" value=""
+                            placeholder='Nom'>
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <input formControlName="email" id="email" type="text" class="form-control" name="email" value=""
+                            placeholder='Email'>
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group" id="iconeOeil">
+                        <input id="registration-password" formControlName="password" type="password"
+                            class="form-control" name="password" placeholder='Mot de passe' (change)="checkLengthMdp($event)">
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group" id="iconeOeil">
+                        <input id="registration-password-confirmation" formControlName="passwordConfirmation" type="password"
+                            class="form-control" name="password" placeholder='Confirmation du mot de passe' (change)="checkLengthMdp($event)">
+                    </div>
+                    <div *ngIf="errorMessage" class="alert alert-danger">
+                        <span  class="error">{{errorMessage}}</span>
+                    </div>
+
+                    <div class="col-lg-12 login-btm login-button center" >
+                        <button [disabled]="formRegistration.invalid" type="submit" class="btn  btn-success ">
+                            <fa-icon [icon]="saveIcon"></fa-icon>&nbsp;S'inscrire
+                        </button>
+                    </div>
+                    <div class="col-lg-12 login-btm login-button center">
+                        <a routerLink=".." class="btn btn-danger "><fa-icon [icon]="cancelIcon"></fa-icon>&nbsp;Annuler</a>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

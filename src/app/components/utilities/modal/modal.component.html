@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h2 id="modal-title">{{title}}</h2>
+
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h3 class="modal-title">{{question}}</h3>
+  </div>
+  <div class="modal-footer" *ngIf="buttonsType === 'yesNo'">
+      <button  type="button" class="btn btn-success" (click)="activeModal.close(true)"><fa-icon [icon]="yesIcon"></fa-icon>&nbsp;Oui</button>
+      <button  type="button" class="btn btn-danger" (click)="activeModal.close(false)"><fa-icon [icon]="noIcon"></fa-icon>&nbsp;Non</button>
+  </div>
+  <div class="modal-footer" *ngIf="buttonsType === 'validerAnnuler'">
+      <button  type="button" class="btn btn-primary" (click)="activeModal.close(true)"><fa-icon [icon]="validIcon"></fa-icon>&nbsp;Valider</button>
+      <button  type="button" class="btn btn-danger" (click)="activeModal.close(false)"><fa-icon [icon]="cancelIcon"></fa-icon>&nbsp;Annuler</button>
+  </div>

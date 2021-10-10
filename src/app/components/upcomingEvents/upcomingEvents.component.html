@@ -1,0 +1,60 @@
+<div class="main-screen">
+  <h2>Aujourd'hui et les prochains jours</h2>
+  <div *ngIf="eventsSemaine?.length > 0; else noEvent">
+    <div class="card-list row">
+      <div class="col col-md-4" *ngFor="let event of eventsSemaine">
+        <app-eventCard [evenement]=event type="upCommingCard" [user]=user [imComing]="imComing(event)"  (IAccept)="IAccept($event)" (IRefuse)="IRefuse($event)"></app-eventCard>
+      </div>
+    </div>
+  </div>
+  <ng-template #noEvent>
+    <div class="noEvent">
+      <div class="alert alert-danger">Vous n'avez pas d'événement aujourd'hui et les prochains jours</div>
+    </div>
+  </ng-template>
+
+  <div style="height: 20px;"></div>
+
+  <h2>Dans le mois qui vient</h2>
+  <div *ngIf="eventsMois?.length > 0; else noEvent2">
+    <div class="card-list row">
+      <div class="col col-md-4" *ngFor="let event of eventsMois">
+        <app-eventCard [evenement]=event type="upCommingCard" [user]=user [imComing]="imComing(event)"  (IAccept)="IAccept($event)" (IRefuse)="IRefuse($event)"></app-eventCard>
+      </div>
+    </div>
+  </div>
+  <ng-template #noEvent2>
+    <div class="noEvent">
+      <div class="alert alert-danger">Vous n'avez pas d'événement à venir dans le mois qui vient</div>
+    </div>
+  </ng-template>
+
+  <div style="height: 20px;"></div>
+
+  <h2>Autres évènements</h2>
+  <div *ngIf="eventsApres?.length > 0; else noEvent3">
+    <div class="card-list row">
+      <div class="col col-md-4" *ngFor="let event of eventsApres">
+        <app-eventCard [evenement]=event type="upCommingCard" [user]=user [imComing]="imComing(event)"  (IAccept)="IAccept($event)" (IRefuse)="IRefuse($event)"></app-eventCard>
+      </div>
+    </div>
+  </div>
+  <ng-template #noEvent3>
+    <div class="noEvent">
+      <div class="alert alert-danger">Vous n'avez pas d'autres événement à venir</div>
+    </div>
+  </ng-template>
+  
+  <div style="height: 40px;"></div>
+
+  <div class="addButtonDiv">
+    <a (click)="add()" class="btn btn-success addButton">
+      <fa-icon [icon]="plusIcon" class="mx-auto plusIcon"></fa-icon>
+    </a>
+  </div>
+
+  <div class="end-screen"></div>
+</div>
+
+
+<app-toaster aria-live="polite" aria-atomic="true"></app-toaster>

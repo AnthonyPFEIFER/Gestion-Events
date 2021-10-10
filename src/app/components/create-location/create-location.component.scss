@@ -1,0 +1,43 @@
+/* Profile */
+.profile-avatar {
+    width: 100%;
+}
+  
+.change-avatar-btn {
+    font-size: 0.8rem;
+}
+
+.card-body-avatar {
+    text-align: center;
+}
+
+@media screen and (max-width: 576px) {
+    .profile-title {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .profile-mail {
+        width: 100%;
+        text-align: center;
+    }
+}
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    .img-location {
+        width: 100%;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .img-location {
+        width: 75%;
+    }
+}
+@media screen and (min-width: 992px) {
+    .img-location {
+        width: 50%;
+    }
+}
+
+.card-footer {
+    text-align: right;
+}

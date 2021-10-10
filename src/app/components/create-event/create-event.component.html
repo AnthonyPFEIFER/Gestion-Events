@@ -1,0 +1,101 @@
+<div class="main-screen">
+    <div class="container">
+        <form [formGroup]="form" (submit)="onSubmit()">
+            <div class="card">
+                <div *ngIf="!isEditing" class="card-header">
+                    <fa-icon [icon]="eventIcon" size="2x" style="vertical-align: middle"></fa-icon>&nbsp;Créer un événement
+                </div>
+
+                <div *ngIf="isEditing" class="card-header">
+                    <fa-icon [icon]="eventIcon" size="2x" style="vertical-align: middle"></fa-icon>&nbsp;Modifier un événement
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="event-name">Nom</label>
+                        <input name="event-name" formControlName="eventName" class="form-control" [(ngModel)]="evenement.name" />
+                    </div>
+                    <form id="selectGroups">
+                        <div>Groupes</div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col" *ngFor="let group of allGroups; let groupIndex = index">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="checkgroup{{ group.id }}" [attr.checked]="isChecked[groupIndex] ? 'checked' : null" (change)="toggleGroup(groupIndex, group)" />
+                                        <label class="form-check-label" for="checkgroup{{ group.id }}">
+                      {{ group.name }}
+                    </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="form-group">
+                        <label for="location">Lieu</label>
+                        <select name="location" formControlName="location" class="form-control" [class.font-weight-bold]="this.locationControl.value === 'new'" list="location-list" (change)="onLocationChange()">
+              <option value="new" class="font-weight-bold">
+                &lt; --nouveau lieu-- &gt;
+              </option>
+              <option
+                *ngFor="let location of allLocations"
+                [value]="location.id"
+              >
+                {{ location.name }}
+              </option>
+            </select>
+                    </div>
+
+                    <div *ngIf="isNewLocation" class="form-group">
+                        <label for="location-name">Nom du lieu</label>
+                        <input name="location-name" formControlName="locationName" class="form-control" [(ngModel)]="evenement.location.name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="street-address">Adresse</label>
+                        <input name="street-address" formControlName="streetAddress" class="form-control" [(ngModel)]="evenement.location.adress" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">Ville</label>
+                        <input name="city" formControlName="city" class="form-control" [(ngModel)]="evenement.location.city" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input name="phone" formControlName="phone" class="form-control" [(ngModel)]="evenement.location.phone" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="datetime">Heure</label>
+                        <input type="datetime-local" name="datetime" min="{{ now }}" formControlName="datetime" class="form-control" [(ngModel)]="evenement.date" />
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Commentaires, Menu du jour...</label>
+                        <textarea name="description" maxlength="200" formControlName="description" class="form-control" [(ngModel)]="evenement.comment"></textarea>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="left-side-card-footer">
+                        <!--                         <button *ngIf="!isEditing" class="btn btn-danger" style="margin-left: 10px" (click)="supprimer()">
+                        <fa-icon [icon]="deleteIcon"></fa-icon>&nbsp;Supprimer
+                        </button>-->
+                    </div>
+
+                    <div class="right-side-card-footer">
+                        <button type="submit" [disabled]="!form.valid" class="btn btn-primary">
+              <fa-icon [icon]="saveIcon"></fa-icon>&nbsp;Enregistrer
+            </button>
+                        <button class="btn btn-danger" style="margin-left: 10px" (click)="cancel()">
+              <fa-icon [icon]="cancelIcon"></fa-icon>&nbsp;Annuler
+            </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="end-screen"></div>
+</div>

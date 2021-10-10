@@ -1,0 +1,71 @@
+@import '../../../assets/styles/variables.scss';
+
+h3 {
+  margin-left: 20px;
+  font-size: 2rem;
+}
+
+.tableDiv {
+  display: flex;
+  flex-direction: column;
+  h1 {
+    margin-left: 10%;
+  }
+  table {
+    align-self: center;
+    width: 80%;
+    text-align: center;
+    border-collapse: collapse;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    //box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+    thead {
+      background-color: rgb(92, 198, 242);
+      color: white;
+      letter-spacing: 2px;
+      font-weight: bold;
+      text-align: left;
+    }
+    tbody {
+      color: grey;
+      text-align: left;
+      td:nth-child(3) {
+        width: 50px;
+      }
+      td:nth-child(4) {
+        width: 50px;
+      }
+      td:nth-child(5) {
+        width: 50px;
+      }
+      a {
+        color: $mainColor;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .tableDiv {
+    visibility: collapse;
+  }
+  .cardDiv {
+    visibility: visible;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .tableDiv {
+    visibility: visible;
+  }
+  .cardDiv {
+    visibility: collapse;
+  }
+}
+
+.deleteLocation{
+  font-size: 1.5rem;
+  color: red;
+  cursor: pointer;
+}

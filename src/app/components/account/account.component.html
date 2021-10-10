@@ -1,0 +1,125 @@
+<div class="main-screen">
+    <div class="container">
+
+        <!-- Affichage avatar + possibilité d'uploader une nouvelle image -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-6  col-md-4 col-lg-4 col-xl-3 col-xxl-3" style="text-align: center;">
+                <div class="profilSidebar">
+                    <img  [src]='account.avatar64' alt="Photo de profil">
+                  </div>
+                <!--<img src="https://uifaces.co/our-content/donated/yn7PKqTT.jpg" alt="Avatar" class="avatar profile-avatar" />-->
+                <button type="button" class="btn btn-link change-avatar-btn" (click)="openAvatarUpload()"><fa-icon [icon]="avatarIcon"></fa-icon>&nbsp;Changer votre avatar</button>
+            </div>
+            <div class="col-xs-12 col-sm-6  col-md-8 col-lg-8 col-xl-9 col-xxl-9" style="text-align: right;">
+                <label class="profile-title">{{account.firstname}} {{account.lastname}}</label><br>
+                <label class="profile-mail"><fa-icon [icon]="atIcon"></fa-icon>&nbsp;{{account.email}}</label><br>
+            </div>
+        </div>
+
+        <div class="m-5"></div>
+
+        <!-- Form pour sélectionner les groupes auquel on appartient -->
+        <div class="card">
+            <form id="selectGroups" role="form" (ngSubmit)="selectGroups()" [formGroup]="selectGroupsForm">
+                <div class="card-header">
+                    <fa-icon [icon]="groupesIcon" size="2x" style=" vertical-align: middle;"></fa-icon>&nbsp;Groupes
+                </div>
+                
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6  col-md-4 col-lg-3 col-xl-2 col-xxl-2" *ngFor="let group of listGroups">
+                            <app-checkgroup [group]=group type="agendaCard" ></app-checkgroup>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="errorMessage2 != null && errorMessage2 !== ''">
+                        {{errorMessage2}}
+                    </div>
+                    <div class="alert alert-success" role="alert" *ngIf="groupsSave">
+                      La sélection des groupes a été enregistrée.
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary"><fa-icon [icon]="saveIcon"></fa-icon>&nbsp;Enregistrer</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="m-5"></div>
+
+        <!-- Form pour changer le mot de passe -->
+        <div class="card">
+            <form id="changePasswordform" role="form" (ngSubmit)="changePassword()" [formGroup]="changePasswordForm">
+                <div class="card-header">
+                    <fa-icon [icon]="passwordIcon" size="2x" style=" vertical-align: middle;"></fa-icon>&nbsp;Changer votre mot de passe
+                </div>
+                
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12  col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                            <div class="mb-3">
+                                <label for="oldpassword" class="form-label">Votre mot de passe actuel</label>
+                                <input id="oldpassword" formControlName="oldpassword" type="password" class="form-control" name="oldpassword">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12  col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                            
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12  col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                            <div class="mb-3">
+                                <label for="newpassword" class="form-label">Votre nouveau mot de passe</label>
+                                <input id="newpassword" formControlName="newpassword" type="password" class="form-control" name="newpassword">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12  col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                            <div class="mb-3">
+                                <label for="newpassword2" class="form-label">Répéter votre nouveau mot de passe</label>
+                                <input id="newpassword2" formControlName="newpassword2" type="password" class="form-control" name="newpassword2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger"
+                        *ngIf="!newPwdSave && changePasswordForm.get('oldpassword').invalid && (changePasswordForm.get('oldpassword').touched || changePasswordForm.get('oldpassword').dirty  )">
+                        <div *ngIf="changePasswordForm.get('oldpassword').getError('required')">Le mot de passe actuel est requis
+                        </div>
+                        <div *ngIf="changePasswordForm.get('oldpassword').getError('minlength')">Le mot de passe actuel n'est pas assez long
+                        </div>
+                    </div>
+                    <div class="alert alert-danger"
+                        *ngIf="!newPwdSave && changePasswordForm.get('newpassword').invalid && (changePasswordForm.get('newpassword').touched || changePasswordForm.get('newpassword').dirty  )">
+                        <div *ngIf="changePasswordForm.get('newpassword').getError('required')">Le nouveau mot de passe est requis
+                        </div>
+                        <div *ngIf="changePasswordForm.get('newpassword').getError('minlength')">Le nouveau mot de passe n'est pas assez long
+                        </div>
+                    </div>
+                    <div class="alert alert-danger"
+                        *ngIf="!newPwdSave && ((changePasswordForm.get('newpassword2').value != changePasswordForm.get('newpassword').value) || changePasswordForm.get('newpassword2').invalid) && (changePasswordForm.get('newpassword2').touched || changePasswordForm.get('newpassword2').dirty)">
+                        <div *ngIf="changePasswordForm.get('newpassword2').getError('required')">Le nouveau mot de passe doit être répété
+                        </div>
+                        <div *ngIf="changePasswordForm.get('newpassword2').getError('minlength')">Le nouveau mot de passe répété n'est pas assez long
+                        </div>
+                        <div *ngIf="changePasswordForm.get('newpassword2').value != changePasswordForm.get('newpassword').value">Les deux champs pour le nouveau mot de passe ne sont pas identiques
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="errorMessage != null && errorMessage!== ''">
+                        {{errorMessage}}
+                    </div>
+                    <div class="alert alert-success" role="alert" *ngIf="newPwdSave">
+                      Le nouveau mot de passe a été enregistré.
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary" ><fa-icon [icon]="saveIcon"></fa-icon>&nbsp;Enregistrer</button>
+                </div>
+            </form>
+        </div>
+
+        <div style="height: 20px;"></div>
+    </div>
+
+    <div class="end-screen"></div>
+</div>

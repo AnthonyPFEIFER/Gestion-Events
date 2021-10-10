@@ -1,0 +1,22 @@
+@media screen and (min-width: 200px) and (max-width: 375px) {
+  .mobileNavbar {
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: gainsboro;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    .navbar-item {
+      width: 20%;
+    }
+  }
+}
+@media screen and (min-width: 376px) {
+  .mobileNavbar {
+    display: none;
+  }
+}

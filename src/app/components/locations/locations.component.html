@@ -1,0 +1,80 @@
+<div class="main-screen">
+  <h3> Les bonnes adresses</h3>
+
+    <div class="tableDiv">
+      <table class="table table-striped">
+        <!--<thead style="background-color: #154194;">
+          <tr>
+            <th scope="col" style="width:25%;">Nom du lieu</th>
+            <th scope="col" style="width:50%;">Adresse</th>
+            <th scope="col" style="width:25%;">Télephone</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>-->
+        <tbody>
+          <tr *ngFor="let location of listLocations" style="vertical-align: middle;">
+            <td scope="row" style="width:25%; vertical-align: middle;"><h2>{{location.name}}</h2></td>
+            <td scope="row" style="width:50%; vertical-align: middle;"> <a target="_blank" [href]="'http://maps.google.com/?q=' + location.adress + location.city"><fa-icon [icon]="addressIcon"></fa-icon>&nbsp;{{location.adress}}, {{ location.city}}</a></td>
+            <td scope="row" style="width:25%; vertical-align: middle;"><a  [href]="'tel:'+location.phone"><fa-icon [icon]="phoneIcon"></fa-icon>&nbsp;{{location.phone}}</a></td>
+            <td scope="row" style="vertical-align: middle;">
+              <a class="galleryLocation" (click)="showGallery(location)">
+                <button class="btn btn-primary"  style="width: 45px; height: 45px;">
+                  <fa-icon [icon]="picturesIcon"></fa-icon>
+                </button>
+              </a>
+            </td>
+            <td scope="row" style="vertical-align: middle;">
+              <a class="editLocation" (click)="openLocation(location)">
+                <button class="btn btn-success" style="border: 2px solid #28a745; width: 45px; height: 45px;">
+                  <fa-icon [icon]="editIcon"></fa-icon>
+                </button>
+              </a>
+            </td>
+            <td scope="row" style="vertical-align: middle;">
+              <a class="deleteLocation" (click)="deleteLocation(location)">
+                  <button class="btn btn-danger" style="border: 2px solid #dc3545; width: 45px; height: 45px;">
+                    <fa-icon [icon]="deleteIcon"></fa-icon>
+                  </button>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cardDiv">
+      <div class="card" *ngFor="let location of listLocations" style="margin:10px;">
+        <div class="card-body">
+          <h2>{{location.name}}</h2>
+          <a target="_blank" [href]="'http://maps.google.com/?q=' + location.adress + location.city"><fa-icon [icon]="addressIcon"></fa-icon>&nbsp;{{location.adress}}, {{ location.city}}</a> <br>
+          <a  [href]="'tel:'+location.phone"><fa-icon [icon]="phoneIcon"></fa-icon>&nbsp;{{location.phone}}</a><br>
+        </div>
+        <div class="card-footer" style="vertical-align: middle; text-align: right;">
+          <a class="galleryLocation" (click)="showGallery(location)">
+            <button class="btn btn-primary" style="width: 45px; height: 45px; margin-left: 10px; margin-right: 10px;">
+              <fa-icon [icon]="picturesIcon"></fa-icon>
+            </button>
+          </a>
+          <a class="editLocation" (click)="openLocation(location)">
+            <button class="btn btn-success" style="border: 2px solid #28a745; width: 45px; height: 45px; margin-left: 10px; margin-right: 10px;">
+              <fa-icon [icon]="editIcon"></fa-icon>
+            </button>
+          </a>
+          <a class="deleteLocation" (click)="deleteLocation(location)">
+            <button class="btn btn-danger" style="border: 2px solid #dc3545; width: 45px; height: 45px; margin-left: 10px; margin-right: 10px;">
+              <fa-icon [icon]="deleteIcon"></fa-icon>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+      <div class="addButtonDiv">
+        <!--<a [routerLink]="['/home', 'create-location']" routerLinkActive="active-link" class="btn btn-success addButton"> -->
+        <a (click)="newLocation()" class="btn btn-success addButton">
+          <fa-icon [icon]="plusIcon" class="mx-auto plusIcon"></fa-icon>
+        </a>
+      </div>
+</div>

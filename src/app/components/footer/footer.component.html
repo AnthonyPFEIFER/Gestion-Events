@@ -1,0 +1,7 @@
+<div class="mobileNavbar" >  
+    <a [routerLink]="['/home', 'agenda']" routerLinkActive="active-link" class=" navbar-item list-group-item list-group-item-action"><fa-icon [icon]="calendarAltIcon"></fa-icon></a>
+    <a routerLink="upcommingEvent" class=" navbar-item list-group-item list-group-item-action "><fa-icon [icon]="glassCheersIcon"></fa-icon></a>
+    <a [routerLink]="['/home', 'locations']" class=" navbar-item list-group-item list-group-item-action"><fa-icon [icon]="mapSignsIcon"></fa-icon></a>
+    <a routerLink="account" class=" navbar-item list-group-item list-group-item-action "><fa-icon [icon]="cogIcon"></fa-icon></a>
+    <a href="#" class=" navbar-item list-group-item list-group-item-action " (click)="logout()"><fa-icon [icon]="exitIcon"></fa-icon></a>
+  </div>

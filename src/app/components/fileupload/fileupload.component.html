@@ -1,0 +1,20 @@
+<div>
+    <div class="modal-header">
+        <h2 id="modal-title">{{fileuplaod_title}}</h2>
+
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form id="uploadForm" role="form" [formGroup]="uploadForm">
+            <div class="form-group">
+                <label for="file">{{fileuplaod_text}}</label>
+                <input type="file" id="file" formControlName="file" (change)="onFileChange($event)">
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button (click)="actionFunction()" class="btn btn-primary"><fa-icon [icon]="uploadIcon"></fa-icon>&nbsp;Enregistrer</button>
+    </div>
+</div>

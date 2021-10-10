@@ -1,0 +1,23 @@
+<div>
+    <div class="modal-header">
+        <h1 id="modal-title">{{editedLocation?.location?.name}}</h1>
+
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row" *ngIf=" editedLocation.location && editedLocation.location.images">
+            <div class="col-xs-12 col-sm-12  col-md-6 col-lg-6 col-xl-4 col-xxl-4" *ngFor="let file of editedLocation.location.images">
+                <app-picture-gallery-location [file]=file type="fileCard" ></app-picture-gallery-location>
+            </div>
+        </div>
+        <!--<div class="row">
+            <div class="col-xs-12 col-sm-12  col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <a (click)="displayImage()">
+                    <img src="https://www.maisondesvinsdulanguedoc.com/_objets/imgbk/libre/menu-et-carte-cabiron-1592930396-3420.jpg" class="img-thumbnail" alt="Image 1" />
+                </a>
+            </div>
+        </div>-->
+    </div>
+</div>

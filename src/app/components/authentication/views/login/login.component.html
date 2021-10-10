@@ -1,0 +1,52 @@
+<div class="wrapper">
+    <div class="row row-login justify-content-center">
+        <div class="card col-xs-8 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-3">
+            <div class="card-body">
+
+                <img src="../../../assets/images/MistralEventLogo.png" style="width:100%;">
+                <div class="m-5 COBOL">Compiled Only Because Of Luck</div>
+
+                <form id="loginform" class="form-horizontal language" role="form" [formGroup]="formLogin" (ngSubmit)="login()">
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <input formControlName="email" id="login-username" type="text" class="form-control" name="username" value=""
+                            placeholder='Adresse mail'>
+                    </div>
+                    <div class="alert alert-danger"
+                        *ngIf="formLogin.get('email').invalid && (formLogin.get('email').touched || formLogin.get('email').dirty) ">
+                        <div *ngIf="formLogin.get('email').getError('required')">{{"Login.EmailRequis"}}
+                        </div>
+                        <div *ngIf="formLogin.get('email').getError('email')">{{"Login.EmailErreur"}}</div>
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group" id="iconeOeil">
+                        <input id="login-password" formControlName="password" [type]="fieldTextType ? 'text' : 'password'"
+                            class="form-control" name="password" placeholder='Mot de passe'>
+                    </div>
+                    <div class="alert alert-danger"
+                        *ngIf="formLogin.get('password').invalid && (formLogin.get('password').touched || formLogin.get('password').dirty  )">
+                        <div *ngIf="formLogin.get('password').getError('required')">Un mot de passe est requis
+                        </div>
+                        <div *ngIf="formLogin.get('password').getError('minlength')">Le mot de passe saisie n'est pas assez long
+                        </div>
+                    </div>
+                    <div class="col-lg-12 login-btm login-button center" >
+                        <button [disabled]="formLogin.invalid" type="submit" class="btn  btn-success ">
+                            <fa-icon [icon]="connexionIcon"></fa-icon>&nbsp;Connexion
+                        </button>
+                    </div>
+                    
+                    <!--<div class="m-2"></div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-12 control pwdo" style="text-align: center;">
+                                <a [routerLink]="['/home', 'agenda']" onClick="$('#loginbox').hide(); $('#signupbox').show()">Mot de passe oublié?</a>
+                            </div>
+                        </div>-->
+                        <span class="error">{{errorMessage}}</span>
+                    </form>
+                    <div class="center">
+                        <a routerLink="../login/registration" class="btn btn-primary "><fa-icon [icon]="inscriptionIcon"></fa-icon>&nbsp;Pas encore inscrit ?</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

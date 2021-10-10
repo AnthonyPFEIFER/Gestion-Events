@@ -1,0 +1,36 @@
+
+    <div class="bg-light border-right webNavbar" id="sidebar-wrapper">
+        <div class="sidebar-heading">
+          <img src="../../../assets/images/MistralEventLogo.png" alt="">
+          <span id="applicationNameSidebar">Mistral Event</span>
+        </div>
+        <div class="profilSidebar">
+          <img [src]='account.avatar64' alt="Photo de profil" (click)="goToAccount()">
+          <h3> {{account.firstname}} {{account.lastname}} </h3>
+        </div>
+        <div class="list-group list-group-flush">
+          <a [routerLink]="['/home', 'agenda']" routerLinkActive="active-link" class="list-group-item list-group-item-action "><fa-icon [icon]="calendarAltIcon"></fa-icon> Mon agenda</a>
+          <a routerLink="upcommingEvent" routerLinkActive="active-link" class="list-group-item list-group-item-action "><fa-icon [icon]="glassCheersIcon"></fa-icon> Voir les évènements à venir</a>
+          <a [routerLink]="['/home', 'locations']" routerLinkActive="active-link" class="list-group-item list-group-item-action "><fa-icon [icon]="mapSignsIcon"></fa-icon> Liste des adresses</a>
+          <a routerLink="account" routerLinkActive="active-link" class="list-group-item list-group-item-action " routerLinkActive="active-link"><fa-icon [icon]="cogIcon"></fa-icon> Gérer son compte</a>
+          <a [routerLink]="['/home', 'credit']" routerLinkActive="active-link" class="list-group-item list-group-item-action " routerLinkActive="active-link"><fa-icon [icon]="creditIcon"></fa-icon> Crédits</a>
+          <a href="#" class="list-group-item list-group-item-action" (click)="logout()" ><fa-icon [icon]="exitIcon" ></fa-icon> Déconnexion</a>
+        </div>
+    </div>
+
+    <div class="bg-light border-right tabletNavbar" id="sidebar-wrapper">
+      <div class="sidebar-heading">
+        <img src="../../../assets/images/MistralEventLogo.png" alt="">
+      </div>
+      <div class="profilSidebar">
+        <img [src]='account.avatar64' alt="Photo de profil">
+      </div>
+      <div class="list-group list-group-flush">
+        <a routerLink="agenda" routerLinkActive="active-link" class="list-group-item list-group-item-action "><fa-icon [icon]="calendarAltIcon"></fa-icon></a>
+        <a routerLink="upcommingEvent" routerLinkActive="active-link" class="list-group-item list-group-item-action "><fa-icon [icon]="glassCheersIcon"></fa-icon></a>
+        <a [routerLink]="['/home', 'locations']" routerLinkActive="active-link" class="list-group-item list-group-item-action "><fa-icon [icon]="mapSignsIcon"></fa-icon></a>
+        <a routerLink="account" routerLinkActive="active-link" class="list-group-item list-group-item-action "><fa-icon [icon]="cogIcon"></fa-icon></a>
+        <a routerLink="credit" routerLinkActive="active-link" class="list-group-item list-group-item-action "><fa-icon [icon]="creditIcon"></fa-icon></a>
+        <a href="#" class="list-group-item list-group-item-action" (click)="logout()" ><fa-icon [icon]="exitIcon"></fa-icon></a>
+      </div>
+  </div>
